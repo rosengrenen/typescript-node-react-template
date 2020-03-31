@@ -1,10 +1,7 @@
-import dotenv from 'dotenv';
+import 'reflect-metadata';
 import { createConnection } from 'typeorm';
-
 import createApolloServer from './apollo';
 import typeormConfig from './typeorm-config';
-
-dotenv.config();
 
 (async function () {
 	try {

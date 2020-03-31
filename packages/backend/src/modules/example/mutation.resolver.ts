@@ -1,6 +1,8 @@
-import { Resolver, Query, Field, InputType, Float, Arg } from 'type-graphql';
+import { Resolver, Field, InputType, Float, Arg, Mutation } from 'type-graphql';
+import { getRepository } from 'typeorm';
 
-import Example from './example';
+import DBExample from '../../entities/example';
+import GQLExample from './example';
 
 @InputType()
 class CreateExampleInput {
@@ -11,20 +13,19 @@ class CreateExampleInput {
 	ratio: number;
 }
 
-@Resolver(Example)
+@Resolver(GQLExample)
 class ExampleMutationResolver {
-	@Query(() => Example)
-	createExample(@Arg('input') { name, ratio }: CreateExampleInput): Example {
-		if (name === ratio.toString()) {
-			throw new Error();
-		}
-
-		return {
-			id: 'abc',
-			name: 'Example name',
-			ratio: 0.75,
+	@Mutation(() => GQLExample)
+	async createExample(
+		@Arg('input') { name, ratio }: CreateExampleInput,
+	): Promise<GQLExample> {
+		const exampleRepository = getRepository(DBExample);
+		const example = await exampleRepository.save({
+			name,
+			ratio,
 			timestamp: new Date(),
-		};
+		});
+		return example;
 	}
 }
 

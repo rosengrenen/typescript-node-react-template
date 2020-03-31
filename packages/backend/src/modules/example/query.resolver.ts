@@ -1,6 +1,8 @@
 import { Resolver, Query, Field, ArgsType, Args } from 'type-graphql';
 
-import Example from './example';
+import DBExample from '../../entities/example';
+import GQLExample from './example';
+import { getRepository } from 'typeorm';
 
 @ArgsType()
 class ExamplesArgs {
@@ -8,24 +10,28 @@ class ExamplesArgs {
 	from: Date;
 
 	@Field({ nullable: true })
-	to: Date;
+	to?: Date;
 }
 
-@Resolver(Example)
+@Resolver(GQLExample)
 class ExampleQueryResolver {
-	@Query(() => [Example])
-	examples(@Args() { from, to }: ExamplesArgs): Example[] {
-		if (from > to) {
-			throw new Error('From must not be greater than to');
+	@Query(() => [GQLExample])
+	async examples(@Args() { from, to }: ExamplesArgs): Promise<GQLExample[]> {
+		const exampleRepository = getRepository(DBExample);
+
+		if (to) {
+			const examples = await exampleRepository
+				.createQueryBuilder('example')
+				.where('example.timestamp > :from', { from })
+				.andWhere('example.timestamp < :to', { to })
+				.getMany();
+			return examples;
+		} else {
+			return exampleRepository
+				.createQueryBuilder('example')
+				.where('example.timestamp > :from', { from })
+				.getMany();
 		}
-		return [
-			{
-				id: 'abc',
-				name: 'Example name',
-				ratio: 0.75,
-				timestamp: new Date(),
-			},
-		];
 	}
 }
 

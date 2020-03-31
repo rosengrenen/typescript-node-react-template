@@ -1,4 +1,7 @@
 import { ConnectionOptions } from 'typeorm';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const config: ConnectionOptions = {
 	type: 'postgres',
