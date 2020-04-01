@@ -27,3 +27,36 @@ A monorepo (using `yarn workspaces`) template for a web application using a Reac
 ### Database
 
 - Postgres
+- Pgadmin to access the database visually
+
+## Using
+
+### Environment variables
+
+In the root of the project, the frontend package, and the backend package, copy the `.env.example` to `.env` and fill in the variables.
+
+### Development
+
+To start the project in development mode, run
+
+```
+docker-compose up -d
+```
+
+in the root of the project.
+
+#### Logs
+
+To access the logs run
+
+```
+docker-compose logs -f frontend
+```
+
+or
+
+```
+docker-compose logs -f backend
+```
+
+in the root of the project
