@@ -1,7 +1,7 @@
 {
-  "name": "@trello-burndown/frontend",
+  "name": "@template-project/frontend",
   "version": "0.0.0",
-  "repository": "trello-burndown/frontend",
+  "repository": "",
   "main": "lib/index.js",
   "license": "MIT",
   "private": true,
@@ -10,16 +10,23 @@
     "build:check": "tcs --noEmit",
     "dev": "parcel -p 3000 --hmr-port 1234 watch public/index.html",
     "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "test": ""
   },
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.3",
+    "apollo-boost": "^0.4.7",
+    "graphql": "^14.6.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.1.2",
+    "styled-components": "^5.0.1"
   },
   "devDependencies": {
     "@types/parcel-env": "^0.0.0",
     "@types/react": "^16.9.25",
     "@types/react-dom": "^16.9.5",
+    "@types/react-router-dom": "^5.1.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.1",
     "parcel-bundler": "^1.12.4"
