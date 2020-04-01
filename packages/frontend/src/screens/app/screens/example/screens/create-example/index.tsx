@@ -1,2 +1,2 @@
-import { default as CreateExampleScreen } from './create-example-view';
+import { default as CreateExampleScreen } from './create-example-state';
 export default CreateExampleScreen;

@@ -3,7 +3,7 @@ import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 import ListExamplesView from './list-examples-view';
 
-interface GetExamplesResult {
+interface GetExamplesResponse {
 	examples: {
 		id: string;
 		name: string;
@@ -28,9 +28,9 @@ const GET_EXAMPLES = gql`
 
 const FROM_DATE = new Date(Date.now() - 1000 * 60 * 60 * 24 * 7); // Last 7 weeks
 
-const ListExamplesApollo: React.FC = () => {
+const ListExamplesData: React.FC = () => {
 	const { data, error, loading } = useQuery<
-		GetExamplesResult,
+		GetExamplesResponse,
 		GetExamplesInput
 	>(GET_EXAMPLES, {
 		variables: {
@@ -53,4 +53,4 @@ const ListExamplesApollo: React.FC = () => {
 	return null;
 };
 
-export default ListExamplesApollo;
+export default ListExamplesData;
