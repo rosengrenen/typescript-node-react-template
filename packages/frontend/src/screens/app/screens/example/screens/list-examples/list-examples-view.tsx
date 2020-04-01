@@ -1,5 +1,24 @@
 import React from 'react';
 
-const ListExamplesView = () => <div>List examples</div>;
+interface ListExamplesViewProps {
+	examples: {
+		id: string;
+		name: string;
+		ratio: number;
+	}[];
+}
+
+const ListExamplesView: React.FC<ListExamplesViewProps> = ({ examples }) => (
+	<>
+		<h3>List of examples</h3>
+		<ul>
+			{examples.map(({ id, name, ratio }) => (
+				<li key={id}>
+					{name}: {ratio}
+				</li>
+			))}
+		</ul>
+	</>
+);
 
 export default ListExamplesView;
