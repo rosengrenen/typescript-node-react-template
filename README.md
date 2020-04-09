@@ -8,6 +8,7 @@ A monorepo (using `yarn workspaces`) template for a web application using a Reac
 - `eslint` for linting
 - `jest` for testing
 - `prettier` (via `eslint`) for formatting
+- `husky` for git hooks, such as applying formatting pre commits and fetching latest yarn packages post merges
 - Docker for containerization
 - TravisCI for continuous integration
 
