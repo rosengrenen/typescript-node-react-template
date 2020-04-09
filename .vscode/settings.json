@@ -16,11 +16,11 @@
 	},
 	"[typescript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.formatOnPaste": false
+		"editor.formatOnSave": false
 	},
 	"[typescriptreact]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.formatOnPaste": false
+		"editor.formatOnSave": false
 	},
 	"[yaml]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
