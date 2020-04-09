@@ -1,9 +1,9 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
-import HomeScreen from './screens/home';
-import ExampleScreen from './screens/example';
 import { AppTitle } from './app-styles';
+import ExampleScreen from './screens/example';
+import HomeScreen from './screens/home';
 
 const AppView = () => {
 	return (

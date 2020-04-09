@@ -1,4 +1,4 @@
-import { ObjectType, Field, ID, Float } from 'type-graphql';
+import { Field, Float, ID, ObjectType } from 'type-graphql';
 
 @ObjectType()
 class Example {
