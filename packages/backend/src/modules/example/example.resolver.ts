@@ -1,4 +1,4 @@
-import { Resolver, FieldResolver, Root, ResolverInterface } from 'type-graphql';
+import { FieldResolver, Resolver, ResolverInterface, Root } from 'type-graphql';
 
 import Example from './example';
 

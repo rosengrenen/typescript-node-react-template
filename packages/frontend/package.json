@@ -1,36 +1,38 @@
 {
-  "name": "@template-project/frontend",
-  "version": "0.0.0",
-  "repository": "",
-  "main": "lib/index.js",
-  "license": "MIT",
-  "private": true,
-  "scripts": {
-    "build": "parcel build src/index.html",
-    "build:check": "tcs --noEmit",
-    "clean": "rimraf .cache dist",
-    "dev": "parcel -p 3000 --hmr-port 1234 watch src/index.html",
-    "lint": "eslint . --ext .ts,.tsx",
-    "lint:fix": "eslint . --ext .ts,.tsx --fix",
-    "test": "jest"
-  },
-  "dependencies": {
-    "@apollo/react-hooks": "^3.1.3",
-    "@types/styled-components": "^5.0.1",
-    "apollo-boost": "^0.4.7",
-    "graphql": "^14.6.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^5.1.2",
-    "styled-components": "^5.0.1"
-  },
-  "devDependencies": {
-    "@types/parcel-env": "^0.0.0",
-    "@types/react": "^16.9.25",
-    "@types/react-dom": "^16.9.5",
-    "@types/react-router-dom": "^5.1.3",
-    "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "^2.5.1",
-    "parcel-bundler": "^1.12.4"
-  }
+	"name": "@template-project/frontend",
+	"version": "0.0.0",
+	"repository": "",
+	"main": "lib/index.js",
+	"license": "MIT",
+	"private": true,
+	"scripts": {
+		"build": "parcel build src/index.html",
+		"build:check": "tcs --noEmit",
+		"clean": "rimraf .cache dist",
+		"dev": "parcel -p 3000 --hmr-port 1234 watch src/index.html",
+		"lint": "eslint --ext .ts,.tsx . && yarn prettier:check",
+		"lint:fix": "eslint --ext .ts,.tsx --fix . && yarn prettier:format",
+		"prettier:format": "prettier --write --ignore-path ../../.gitignore --loglevel error \"**/*.{js,jsx,json,yml,yaml}\"",
+		"prettier:check": "prettier --list-different --ignore-path ../../.gitignore \"**/*.{js,jsx,json,yml,yaml}\"",
+		"test": "jest"
+	},
+	"dependencies": {
+		"@apollo/react-hooks": "^3.1.3",
+		"@types/styled-components": "^5.0.1",
+		"apollo-boost": "^0.4.7",
+		"graphql": "^14.6.0",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"react-router-dom": "^5.1.2",
+		"styled-components": "^5.0.1"
+	},
+	"devDependencies": {
+		"@types/parcel-env": "^0.0.0",
+		"@types/react": "^16.9.25",
+		"@types/react-dom": "^16.9.5",
+		"@types/react-router-dom": "^5.1.3",
+		"eslint-plugin-react": "^7.19.0",
+		"eslint-plugin-react-hooks": "^2.5.1",
+		"parcel-bundler": "^1.12.4"
+	}
 }

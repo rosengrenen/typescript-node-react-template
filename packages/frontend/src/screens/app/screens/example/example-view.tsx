@@ -1,5 +1,6 @@
 import React from 'react';
-import { Switch, Route, useRouteMatch, Link } from 'react-router-dom';
+
+import { Link, Route, Switch, useRouteMatch } from 'react-router-dom';
 
 import CreateExampleScreen from './screens/create-example';
 import ListExamplesScreen from './screens/list-examples';

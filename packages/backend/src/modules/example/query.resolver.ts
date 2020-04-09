@@ -1,8 +1,9 @@
-import { Resolver, Query, Field, ArgsType, Args } from 'type-graphql';
+import { Args, ArgsType, Field, Query, Resolver } from 'type-graphql';
+import { getRepository } from 'typeorm';
 
 import DBExample from '../../entities/example';
+
 import GQLExample from './example';
-import { getRepository } from 'typeorm';
 
 @ArgsType()
 class ExamplesArgs {
