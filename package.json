@@ -9,7 +9,7 @@
 		"packages/*"
 	],
 	"lint-staged": {
-		"*.tsx?": "eslint --fix",
+		"*.{ts,tsx}": "eslint --fix",
 		"*.{js,json,yml,yaml}": "prettier --write --loglevel error"
 	},
 	"scripts": {
