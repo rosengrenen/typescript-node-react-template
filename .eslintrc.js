@@ -31,7 +31,7 @@ module.exports = {
 					// Side effect imports
 					['^\\u0000'],
 					// React imports
-					['react', 'react-dom'],
+					['^react$', '^react-dom$'],
 					// Packages
 					// Imports starting with aletter, digit, underscore, or an @ followed by a letter
 					['^@?\\w'],
