@@ -12,8 +12,10 @@
 		"build": "lerna run build",
 		"check-packages": "yarn clean && yarn build && yarn test && yarn lint",
 		"clean": "lerna run clean",
-		"lint": "lerna run lint",
-		"lint:fix": "lerna run lint:fix && prettier --write --ignore-path .gitignore --loglevel error \"*.{js,jsx,json,yml,yaml}\"",
+		"lint": "lerna run lint && yarn prettier:check",
+		"lint:fix": "lerna run lint:fix && yarn prettier:format",
+		"prettier:format": "prettier --write --ignore-path .gitignore --loglevel error \"*.{js,jsx,json,yml,yaml}\"",
+		"prettier:check": "prettier --list-different --ignore-path .gitignore \"*.{js,jsx,json,yml,yaml}\"",
 		"test": "lerna run test",
 		"update-version": "lerna publish --skip-git --skip-npm --force-publish '*'"
 	},
