@@ -1,5 +1,6 @@
-import React from 'react';
 import { ApolloProvider as AP } from '@apollo/react-hooks';
+import React from 'react';
+
 import ApolloClient from 'apollo-boost';
 
 console.log(process.env.GRAPHQL_API_ENDPOINT);

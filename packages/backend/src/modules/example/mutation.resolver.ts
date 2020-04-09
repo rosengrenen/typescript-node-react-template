@@ -1,7 +1,8 @@
-import { Resolver, Field, InputType, Float, Arg, Mutation } from 'type-graphql';
+import { Arg, Field, Float, InputType, Mutation, Resolver } from 'type-graphql';
 import { getRepository } from 'typeorm';
 
 import DBExample from '../../entities/example';
+
 import GQLExample from './example';
 
 @InputType()
