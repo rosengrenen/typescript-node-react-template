@@ -1,17 +1,16 @@
-import 'reflect-metadata';
-
-import { createConnection } from 'typeorm';
-
-import createApolloServer from './apollo';
-import typeormConfig from './typeorm-config';
+import express from 'express';
 
 (async function () {
 	try {
-		await createConnection(typeormConfig);
+		const app = express();
 
-		const server = await createApolloServer();
-		const { url } = await server.listen(3000);
-		console.log(`Server ready at ${url}`);
+		app.get('/', (req, res) => {
+			return res.send(req.query);
+		});
+
+		app.listen(3000, () => {
+			console.log(`Server ready`);
+		});
 	} catch (e) {
 		console.error(e);
 	}

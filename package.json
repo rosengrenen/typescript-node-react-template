@@ -9,12 +9,12 @@
 		"packages/*"
 	],
 	"lint-staged": {
-		"*.{ts,tsx}": "eslint --fix",
-		"*.{js,json,yml,yaml}": "prettier --write --loglevel error"
+		"*.{ts,tsx,js,json,yml,yaml}": "prettier --write --loglevel error"
 	},
 	"scripts": {
 		"build": "lerna run build",
-		"check-packages": "yarn clean && yarn build && yarn test && yarn lint",
+		"build:check": "lerna run build:check",
+		"check-packages": "yarn clean && yarn build:check && yarn build && yarn test && yarn lint",
 		"clean": "lerna run clean",
 		"lint": "lerna run lint && yarn prettier:check",
 		"lint:fix": "lerna run lint:fix && yarn prettier:format",
@@ -34,12 +34,12 @@
 		"eslint-plugin-prettier": "^3.1.2",
 		"eslint-plugin-simple-import-sort": "^5.0.2",
 		"husky": "^4.2.3",
-		"jest": "^25.2.7",
+		"jest": "^25.3.0",
 		"lerna": "^3.20.2",
 		"lint-staged": "^10.1.2",
 		"prettier": "^2.0.2",
 		"rimraf": "^3.0.2",
-		"ts-jest": "^25.3.1",
+		"ts-jest": "^25.4.0",
 		"typescript": "^3.8.3",
 		"yarnhook": "^0.4.3"
 	}
