@@ -1,18 +1,18 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
+import BaseEntity from './base-entity';
+
 @Entity()
-class Example {
+export default class Example extends BaseEntity {
 	@PrimaryGeneratedColumn('uuid')
 	id: string;
 
 	@Column()
 	name: string;
 
-	@Column('float')
-	ratio: number;
+	@Column()
+	email: string;
 
 	@Column()
-	timestamp: Date;
+	password: string;
 }
-
-export default Example;
