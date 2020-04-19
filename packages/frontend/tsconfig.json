@@ -1,6 +1,7 @@
 {
 	"compilerOptions": {
 		"jsx": "react",
+		"target": "es6",
 		"types": ["jest", "node"]
 	},
 	"extends": "../../tsconfig.base.json",
