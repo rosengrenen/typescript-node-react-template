@@ -21,9 +21,6 @@ export default class User extends BaseEntity {
 	githubId?: string;
 
 	@Column({ nullable: true })
-	twitterId?: string;
-
-	@Column({ nullable: true })
 	facebookId?: string;
 
 	private tempPassword: string;
