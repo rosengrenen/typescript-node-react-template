@@ -13,15 +13,15 @@ export default class User extends BaseEntity {
 	@Column()
 	password: string;
 
-	@Column()
-	googleId: string;
+	@Column({ nullable: true })
+	googleId?: string;
 
-	@Column()
-	githubId: string;
+	@Column({ nullable: true })
+	githubId?: string;
 
-	@Column()
-	twitterId: string;
+	@Column({ nullable: true })
+	twitterId?: string;
 
-	@Column()
-	facebookId: string;
+	@Column({ nullable: true })
+	facebookId?: string;
 }
