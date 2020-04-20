@@ -27,7 +27,10 @@ export default class LoginPasswordMutationResolver {
 		@Ctx() context: Context,
 		@Arg('input') { email, password }: LoginPasswordInput,
 	): Promise<LoginPasswordPayload> {
-		console.log(context);
+		if (context.user) {
+			throw new Error('You are already logged in');
+		}
+
 		const userRepository = getRepository(DBUser);
 		const user = await userRepository.findOne(undefined, {
 			where: { email },
