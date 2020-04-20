@@ -1,4 +1,5 @@
-import { Column, Entity } from 'typeorm';
+import bcrypt from 'bcrypt';
+import { AfterLoad, BeforeInsert, BeforeUpdate, Column, Entity } from 'typeorm';
 
 import BaseEntity from './base-entity';
 
@@ -7,10 +8,10 @@ export default class User extends BaseEntity {
 	@Column()
 	name: string;
 
-	@Column()
+	@Column({ nullable: true })
 	email: string;
 
-	@Column()
+	@Column({ nullable: true })
 	password: string;
 
 	@Column({ nullable: true })
@@ -24,4 +25,25 @@ export default class User extends BaseEntity {
 
 	@Column({ nullable: true })
 	facebookId?: string;
+
+	private tempPassword: string;
+
+	@AfterLoad()
+	// eslint-disable-next-line
+	// @ts-ignore
+	private loadTempPassword() {
+		console.log('setting temp password');
+		this.tempPassword = this.password;
+	}
+
+	@BeforeInsert()
+	@BeforeUpdate()
+	// eslint-disable-next-line
+	// @ts-ignore
+	private async encryptPassword() {
+		console.log('encrypting password');
+		if (this.tempPassword !== this.password) {
+			this.password = await bcrypt.hash(this.password, 12);
+		}
+	}
 }

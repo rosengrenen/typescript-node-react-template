@@ -30,11 +30,23 @@ export default class CreateUserMutationResolver {
 		@Arg('input') { name, email, password }: CreateUserInput,
 	): Promise<CreateUserPayload> {
 		const userRepository = getRepository(DBUser);
-		const user = await userRepository.save({
+		let user = await userRepository.findOne(undefined, {
+			where: {
+				email,
+			},
+		});
+
+		if (user) {
+			throw new Error('A user with that email already exists');
+		}
+
+		user = userRepository.create({
 			name,
 			email,
 			password,
 		});
+
+		user = await userRepository.save(user);
 
 		return {
 			user,

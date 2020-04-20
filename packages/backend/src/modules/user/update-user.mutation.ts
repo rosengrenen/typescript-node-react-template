@@ -2,7 +2,6 @@ import { Arg, Field, InputType, Mutation, ObjectType, Resolver } from 'type-grap
 import { getRepository } from 'typeorm';
 
 import DBUser from '../../entities/user';
-import removeUndefinedFields from '../../utils/remove-undefined-fields';
 
 import GQLUser from './user';
 import UserWhereUniqueInput from './user-where-unique-input';
@@ -33,19 +32,36 @@ export default class UpdateUserMutationResolver {
 		@Arg('data') { name, email, password }: UpdateUserInput,
 	): Promise<UpdateUserPayload> {
 		const userRepository = getRepository(DBUser);
-		await userRepository.update(
-			id,
-			removeUndefinedFields({
-				name,
-				email,
-				password,
-			}),
-		);
 
-		const user = await userRepository.findOne(id);
+		if (email) {
+			const user = await userRepository.findOne(undefined, {
+				where: {
+					email,
+				},
+			});
+			if (user && user.id !== id) {
+				throw new Error('A user with that email already exists');
+			}
+		}
+
+		let user = await userRepository.findOne(id);
 		if (!user) {
 			throw new Error('User not found');
 		}
+
+		if (name) {
+			user.name = name;
+		}
+
+		if (email) {
+			user.email = email;
+		}
+
+		if (password) {
+			user.password = password;
+		}
+
+		user = await userRepository.save(user);
 
 		return { user };
 	}
