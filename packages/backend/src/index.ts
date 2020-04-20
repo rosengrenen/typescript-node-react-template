@@ -5,8 +5,10 @@ import dotenv from 'dotenv';
 import express from 'express';
 import session from 'express-session';
 import redis from 'redis';
+import { createConnection } from 'typeorm';
 
 import createApolloServer from './apollo';
+import typeormConfig from './typeorm-config';
 
 dotenv.config();
 
@@ -18,6 +20,8 @@ const RedisSessionStore = RedisSession(session);
 
 (async function () {
 	try {
+		await createConnection(typeormConfig);
+
 		const app = express();
 
 		app.get('/', (req, res) => {

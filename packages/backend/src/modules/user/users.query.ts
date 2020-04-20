@@ -7,7 +7,7 @@ import GQLUser from './user';
 
 @Resolver()
 export default class UsersQueryResolver {
-	@Query()
+	@Query(() => [GQLUser])
 	async users(): Promise<GQLUser[]> {
 		const userRepository = getRepository(DBUser);
 		return userRepository.find();
