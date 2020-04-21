@@ -29,7 +29,6 @@ export default class User extends BaseEntity {
 	// eslint-disable-next-line
 	// @ts-ignore
 	private loadTempPassword() {
-		console.log('setting temp password');
 		this.tempPassword = this.password;
 	}
 
@@ -38,7 +37,6 @@ export default class User extends BaseEntity {
 	// eslint-disable-next-line
 	// @ts-ignore
 	private async encryptPassword() {
-		console.log('encrypting password');
 		if (this.tempPassword !== this.password) {
 			this.password = await bcrypt.hash(this.password, 12);
 		}

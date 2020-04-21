@@ -38,7 +38,13 @@ const RedisSessionStore = RedisSession(session);
 		);
 
 		const server = await createApolloServer();
-		server.applyMiddleware({ app });
+		server.applyMiddleware({
+			app,
+			cors: {
+				origin: String(process.env.FRONTEND_LOCATION),
+				credentials: true,
+			},
+		});
 
 		app.listen(3000, () => {
 			console.log(`Server ready`);
