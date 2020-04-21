@@ -9,7 +9,7 @@
 		"build": "parcel build src/index.html",
 		"build:check": "tsc --noEmit",
 		"clean": "rimraf .cache dist",
-		"dev": "parcel -p 3000 --hmr-port 1234 watch src/index.html",
+		"dev": "parcel -p 3000 --hmr-port 1234 --https watch src/index.html",
 		"lint": "eslint --ext .ts,.tsx . && yarn prettier:check",
 		"lint:fix": "eslint --ext .ts,.tsx --fix . && yarn prettier:format",
 		"prettier:format": "prettier --write --ignore-path ../../.gitignore --loglevel error \"**/*.{js,jsx,json,yml,yaml}\"",
