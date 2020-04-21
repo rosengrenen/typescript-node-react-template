@@ -31,7 +31,7 @@ export default class LoginFacebookMutationResolver {
 
 		const clientId = String(process.env.FACEBOOK_OAUTH2_CLIENT_ID);
 		const clientSecret = String(process.env.FACEBOOK_OAUTH2_CLIENT_SECRET);
-		const redirectUri = 'https://localhost:3000/auth/facebook/callback';
+		const redirectUri = String(process.env.FACEBOOK_OAUTH2_REDIRECT_URI);
 
 		/* eslint-disable @typescript-eslint/camelcase */
 		const query = stringify({

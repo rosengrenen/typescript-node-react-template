@@ -31,7 +31,7 @@ export default class LoginGoogleMutationResolver {
 
 		const clientId = String(process.env.GOOGLE_OAUTH2_CLIENT_ID);
 		const clientSecret = String(process.env.GOOGLE_OAUTH2_CLIENT_SECRET);
-		const redirectUri = 'http://localhost:3000/auth/google/callback';
+		const redirectUri = String(process.env.GOOGLE_OAUTH2_REDIRECT_URI);
 
 		/* eslint-disable @typescript-eslint/camelcase */
 		const query = stringify({
