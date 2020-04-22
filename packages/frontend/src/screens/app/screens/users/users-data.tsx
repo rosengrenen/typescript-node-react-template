@@ -21,7 +21,7 @@ const USERS_QUERY = gql`
 `;
 
 const UsersData = () => {
-	const { data, error, loading } = useQuery(USERS_QUERY);
+	const { data, error, loading } = useQuery<UsersQueryResult>(USERS_QUERY);
 
 	if (loading) {
 		return <>Loading...</>;
