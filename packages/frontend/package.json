@@ -6,7 +6,7 @@
 	"license": "MIT",
 	"private": true,
 	"scripts": {
-		"build": "yarn generate-gql-types && parcel build src/index.html",
+		"build": "parcel build src/index.html",
 		"build:check": "yarn --cwd ../backend generate-gql-schema && yarn generate-gql-types && tsc --noEmit",
 		"clean": "rimraf .cache dist **/__generated__",
 		"generate-gql-types": "apollo client:codegen --config apollo.config.not-vscode.js --target typescript",
