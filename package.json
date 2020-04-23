@@ -19,8 +19,8 @@
 		"lint": "lerna run lint && yarn prettier:check",
 		"lint:fix": "lerna run lint:fix && yarn prettier:format",
 		"pre-commit": "lint-staged",
-		"prettier:format": "prettier --write --ignore-path .gitignore --loglevel error \"*.{js,jsx,json,yml,yaml}\"",
-		"prettier:check": "prettier --list-different --ignore-path .gitignore \"*.{js,jsx,json,yml,yaml}\"",
+		"prettier:format": "prettier --write --ignore-path .gitignore --loglevel error \"{!(packages)/**/,}*.{js,jsx,json,yml,yaml}\"",
+		"prettier:check": "prettier --list-different --ignore-path .gitignore \"{!(packages)/**/,}*.{js,jsx,json,yml,yaml}\"",
 		"test": "lerna run test",
 		"update-version": "lerna publish --skip-git --skip-npm --force-publish '*'"
 	},
