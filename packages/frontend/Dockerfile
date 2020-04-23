@@ -9,7 +9,6 @@ COPY packages/frontend ./packages/frontend
 COPY packages/backend ./packages/backend
 
 RUN yarn --production=false
-RUN yarn --cwd packages/backend generate-gql-schema
 RUN yarn --cwd packages/frontend build:check
 RUN yarn --cwd packages/frontend build
 
